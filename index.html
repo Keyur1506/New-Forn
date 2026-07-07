@@ -4,91 +4,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Create Your Account</title>
 
-    <!-- Link CSS File -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>Registration Form</h1>
+    <div class="form-box">
+
+        <h1>Create Your Account</h1>
+
+        <p class="subtitle">
+            Fill in your details to complete registration
+        </p>
 
         <form>
 
-            <label for="fullname">Full Name</label>
-            <input
-                type="text"
-                id="fullname"
-                name="fullname"
-                placeholder="Enter your full name"
-                required>
+            <!-- Name -->
 
-            <label for="email">Email Address</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                required>
+            <div class="input-box">
 
-            <label for="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-                required>
+                <label>Full Name</label>
 
-            <label>Gender</label>
+                <div class="input-field">
 
-            <div class="gender">
+                    <i class="fa-regular fa-user"></i>
 
-                <label>
-                    <input type="radio" name="gender" value="Male" required>
-                    Male
-                </label><br>
+                    <input type="text"
+                        placeholder="Enter your full name"
+                        required>
 
-                <label>
-                    <input type="radio" name="gender" value="Female">
-                    Female
-                </label><br>
-
-                <label>
-                    <input type="radio" name="gender" value="Other">
-                    Other
-                </label><br>
+                </div>
 
             </div>
 
-            <label for="course">Course / Interest</label>
+            <!-- Email -->
 
-            <select id="course" name="course" required>
+            <div class="input-box">
 
-                <option value="">Select Your Course</option>
+                <label>Email Address</label>
 
-                <option value="HTML">HTML</option>
+                <div class="input-field">
 
-                <option value="CSS">CSS</option>
+                    <i class="fa-regular fa-envelope"></i>
 
-                <option value="JavaScript">JavaScript</option>
+                    <input type="email"
+                        placeholder="Enter your email"
+                        required>
 
-                <option value="Python">Python</option>
+                </div>
 
-                <option value="C++">C++</option>
+            </div>
 
-            </select>
+            <!-- Password -->
 
-            <button type="submit">Register</button>
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input type="password"
+                        placeholder="Create a strong password"
+                        required>
+
+                </div>
+
+                <div class="strength">
+
+                    <span class="active"></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </div>
+
+                <small>Password Strength</small>
+
+            </div>
+
+            <!-- Gender -->
+
+            <div class="input-box">
+
+                <label>Gender</label>
+
+                <div class="gender">
+
+                    <label>
+                        <input type="radio" name="gender">
+                        Male
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender">
+                        Female
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender">
+                        Other
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Course -->
+
+            <div class="input-box">
+
+                <label>Course / Interest</label>
+
+                <select required>
+
+                    <option>Select Your Course</option>
+
+                    <option>HTML</option>
+
+                    <option>CSS</option>
+
+                    <option>JavaScript</option>
+
+                    <option>Python</option>
+
+                    <option>React</option>
+
+                    <option>C++</option>
+
+                </select>
+
+            </div>
+
+            <button>
+
+                Create Account
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
 
         </form>
 
     </div>
+
+</div>
 
 </body>
 
