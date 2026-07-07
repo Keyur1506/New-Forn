@@ -1,50 +1,95 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Registration Form </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <!-- Link CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-	<h1> Registration Form</h1>
 
-<form>
-<label for="fullname"> Full Name:- </label>
-<input type="text" id="full name" name="full name">
-<br><br>
+    <div class="container">
 
-<label for="email"> E-mail:- </label>
-<input type="email" id="email" name="email">
-<br><br>
+        <h1>Registration Form</h1>
 
-<label for="Password"> Password:- </label>
-<input type="Password" id="Password" name="Password">
-<br><br>
+        <form>
 
- 
-<label for="Gender"> Gender: </label>
+            <label for="fullname">Full Name</label>
+            <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Enter your full name"
+                required>
 
-<input type="radio" id="Male" name="Gender" required>
-<label for="male"> Male</label>
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
 
-<input type="radio" id="Female" name="Gender" Value="Female">
-<label for="Female"> Female</label>
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required>
 
-<input type="radio" id="Other" name="Gender"  Value="Other">
-<label for="others"> Others</label>
-<br><br>
+            <label>Gender</label>
 
-<label for="course"> Course: </label>
-<select id="course" name="course" required>
-	<option value="">---Select Course----</option>
-	<option value="html">HTML</option>
-	<option value="css">CSS</option>
-	<option value="javascript">Javascript</option>
-	<option value="c++">C++</option>
-	<option value="python"> Python</option>
-</select>
-<br><br>
+            <div class="gender">
 
-<input type="submit" Value="Register">
-</form>
+                <label>
+                    <input type="radio" name="gender" value="Male" required>
+                    Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Female">
+                    Female
+                </label>
+
+                <label>
+                    <input type="radio" name="gender" value="Other">
+                    Other
+                </label>
+
+            </div>
+
+            <label for="course">Course / Interest</label>
+
+            <select id="course" name="course" required>
+
+                <option value="">Select Your Course</option>
+
+                <option value="HTML">HTML</option>
+
+                <option value="CSS">CSS</option>
+
+                <option value="JavaScript">JavaScript</option>
+
+                <option value="Python">Python</option>
+
+                <option value="C++">C++</option>
+
+            </select>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+    </div>
 
 </body>
+
 </html>
