@@ -1,117 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <div class="container">
-
-    <h1>Registration Form</h1>
-
-    <p class="subtitle">Create your account</p>
-
-    <form id="registerForm" novalidate>
-
-        <div class="input-group">
-            <label for="fullname">Full Name</label>
-            <input
-                type="text"
-                id="fullname"
-                name="fullname"
-                placeholder="Enter your name with your last name"
-                required
-                minlength="3">
-            <small class="error"></small>
-        </div>
-
-        <div class="input-group">
-            <label for="email">Email Address</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your proper email"
-                required>
-            <small class="error"></small>
-        </div>
-
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-                required
-                minlength="8">
-            <small class="error"></small>
-        </div>
-
-        <div class="input-group">
-
-            <label>Gender</label>
-
-            <div class="gender">
-
-                <label>
-                    <input type="radio" name="gender" value="Male" required>
-                    Male
-                </label>
-
-                <label>
-                    <input type="radio" name="gender" value="Female">
-                    Female
-                </label>
-
-                <label>
-                    <input type="radio" name="gender" value="Other">
-                    Other
-                </label>
-
-            </div>
-
-            <small class="error"></small>
-
-        </div>
-
-        <div class="input-group">
-
-            <label for="course">Course / Interest</label>
-
-            <select id="course" required>
-
-                <option value="">Select Course</option>
-                <option>HTML</option>
-                <option>CSS</option>
-                <option>JavaScript</option>
-                <option>React</option>
-                <option>Python</option>
-                <option>C++</option>
-
-            </select>
-
-            <small class="error"></small>
-
-        </div>
-
-        <button type="submit">
-            Register Now
-        </button>
-
-    </form>
-
+<h1>Registration Form</h1>
+<form id="registerForm">
+<div class="input-group"><label>Full Name</label><input id="fullname"><small class="error"></small></div>
+<div class="input-group"><label>Email</label><input id="email" type="email"><small class="error"></small></div>
+<div class="input-group"><label>Password</label><input id="password" type="password"><small class="error"></small></div>
+<div class="input-group"><label>Gender</label>
+<div class="gender">
+<label><input type="radio" name="gender">Male</label>
+<label><input type="radio" name="gender">Female</label>
+<label><input type="radio" name="gender">Other</label>
+</div><small class="error"></small></div>
+<div class="input-group"><label>Course</label>
+<select id="course"><option value="">Select Course</option><option>HTML</option><option>CSS</option><option>JavaScript</option></select>
+<small class="error"></small></div>
+<button>Register</button>
+</form>
 </div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+<div id="popup" class="popup"><div class="popup-box"><h2>✅ Success</h2><p>Form submitted successfully!</p><button id="closePopup">OK</button></div></div>
+<script>
+const f=document.getElementById('registerForm');
+const p=document.getElementById('popup');
+document.getElementById('closePopup').onclick=()=>p.classList.remove('active');
+f.onsubmit=e=>{
+e.preventDefault();
+document.querySelectorAll('.error').forEach(x=>x.textContent='');
+let ok=true;
+const n=fullname.value.trim(), em=email.value.trim(), pw=password.value;
+if(!n){fullname.nextElementSibling.textContent='Enter name';ok=false;}
+if(!em){email.nextElementSibling.textContent='Enter email';ok=false;}
+else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){email.nextElementSibling.textContent='Invalid email';ok=false;}
+if(!pw){password.nextElementSibling.textContent='Enter password';ok=false;}
+else if(pw.length<6){password.nextElementSibling.textContent='Minimum 6 characters';ok=false;}
+if(!document.querySelector('input[name="gender"]:checked')){document.querySelector('.gender').nextElementSibling.textContent='Select gender';ok=false;}
+if(course.value===''){course.nextElementSibling.textContent='Select course';ok=false;}
+if(ok){p.classList.add('active');f.reset();}
+};
+</script>
+</body></html>
