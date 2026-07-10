@@ -4,45 +4,234 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registration Form</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+
 <div class="container">
+
 <h1>Registration Form</h1>
+
 <form id="registerForm">
-<div class="input-group"><label>Full Name</label><input id="fullname"><small class="error"></small></div>
-<div class="input-group"><label>Email</label><input id="email" type="email"><small class="error"></small></div>
-<div class="input-group"><label>Password</label><input id="password" type="password"><small class="error"></small></div>
-<div class="input-group"><label>Gender</label>
-<div class="gender">
-<label><input type="radio" name="gender">Male</label>
-<label><input type="radio" name="gender">Female</label>
-<label><input type="radio" name="gender">Other</label>
-</div><small class="error"></small></div>
-<div class="input-group"><label>Course</label>
-<select id="course"><option value="">Select Course</option><option>HTML</option><option>CSS</option><option>JavaScript</option></select>
-<small class="error"></small></div>
-<button>Register</button>
+
+    <!-- Full Name -->
+    <div class="input-group">
+        <label>Full Name</label>
+        <input
+            type="text"
+            id="fullname"
+            placeholder="Enter your full name">
+        <small class="error"></small>
+    </div>
+
+    <!-- Email -->
+    <div class="input-group">
+        <label>Email</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email">
+        <small class="error"></small>
+    </div>
+
+    <!-- Password -->
+    <div class="input-group">
+        <label>Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Min. 6-8 characters required">
+        <small class="error"></small>
+    </div>
+
+    <!-- Gender -->
+    <div class="input-group">
+
+        <label>Gender</label>
+
+        <div class="gender">
+
+            <label>
+                <input type="radio" name="gender" value="Male">
+                Male
+            </label>
+
+            <label>
+                <input type="radio" name="gender" value="Female">
+                Female
+            </label>
+
+            <label>
+                <input type="radio" name="gender" value="Other">
+                Other
+            </label>
+
+        </div>
+
+        <small class="error"></small>
+
+    </div>
+
+    <!-- Course -->
+
+    <div class="input-group">
+
+        <label>Course</label>
+
+        <select id="course">
+
+            <option value="">Select Course</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+
+        </select>
+
+        <small class="error"></small>
+
+    </div>
+
+    <button type="submit">Register</button>
+
 </form>
+
 </div>
-<div id="popup" class="popup"><div class="popup-box"><h2>✅ Success</h2><p>Form submitted successfully!</p><button id="closePopup">OK</button></div></div>
+
+<!-- Success Popup -->
+
+<div id="popup" class="popup">
+
+    <div class="popup-box">
+
+        <h2>✅ Success</h2>
+
+        <p>Form submitted successfully!</p>
+
+        <button id="closePopup">OK</button>
+
+    </div>
+
+</div>
+
 <script>
-const f=document.getElementById('registerForm');
-const p=document.getElementById('popup');
-document.getElementById('closePopup').onclick=()=>p.classList.remove('active');
-f.onsubmit=e=>{
-e.preventDefault();
-document.querySelectorAll('.error').forEach(x=>x.textContent='');
-let ok=true;
-const n=fullname.value.trim(), em=email.value.trim(), pw=password.value;
-if(!n){fullname.nextElementSibling.textContent='Enter name';ok=false;}
-if(!em){email.nextElementSibling.textContent='Enter email';ok=false;}
-else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){email.nextElementSibling.textContent='Invalid email';ok=false;}
-if(!pw){password.nextElementSibling.textContent='Enter password';ok=false;}
-else if(pw.length<6){password.nextElementSibling.textContent='Minimum 6 characters';ok=false;}
-if(!document.querySelector('input[name="gender"]:checked')){document.querySelector('.gender').nextElementSibling.textContent='Select gender';ok=false;}
-if(course.value===''){course.nextElementSibling.textContent='Select course';ok=false;}
-if(ok){p.classList.add('active');f.reset();}
+
+const form = document.getElementById("registerForm");
+const popup = document.getElementById("popup");
+const closePopup = document.getElementById("closePopup");
+
+closePopup.onclick = function(){
+
+    popup.classList.remove("active");
+
 };
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+document.querySelectorAll(".error").forEach(function(item){
+
+item.textContent="";
+
+});
+
+let valid=true;
+
+// Full Name
+
+const fullname=document.getElementById("fullname");
+
+if(fullname.value.trim()==""){
+
+fullname.nextElementSibling.textContent="Full Name is required";
+
+valid=false;
+
+}
+
+// Email
+
+const email=document.getElementById("email");
+
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(email.value.trim()==""){
+
+email.nextElementSibling.textContent="Email is required";
+
+valid=false;
+
+}
+
+else if(!emailPattern.test(email.value)){
+
+email.nextElementSibling.textContent="Invalid Email Address";
+
+valid=false;
+
+}
+
+// Password
+
+const password=document.getElementById("password");
+
+const passwordPattern=/^[A-Za-z]{6,8}$/;
+
+if(password.value==""){
+
+password.nextElementSibling.textContent="Password is required";
+
+valid=false;
+
+}
+
+else if(!passwordPattern.test(password.value)){
+
+password.nextElementSibling.textContent="Password must contain only 6-8 alphabet letters";
+
+valid=false;
+
+}
+
+// Gender
+
+const gender=document.querySelector('input[name="gender"]:checked');
+
+if(!gender){
+
+document.querySelector(".gender").nextElementSibling.textContent="Please select gender";
+
+valid=false;
+
+}
+
+// Course
+
+const course=document.getElementById("course");
+
+if(course.value==""){
+
+course.nextElementSibling.textContent="Please select course";
+
+valid=false;
+
+}
+
+// Success
+
+if(valid){
+
+popup.classList.add("active");
+
+form.reset();
+
+}
+
+});
+
 </script>
-</body></html>
+
+</body>
+</html>
